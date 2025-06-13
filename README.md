@@ -1,1 +1,1 @@
-# gaitNDD
+An Integrated Shannon 
