@@ -70,7 +70,7 @@ svmPredictFcn = @(x) predict(classificationSVM, x);
 trainedClassifier.predictFcn = @(x) svmPredictFcn(predictorExtractionFcn(x));
 
 % Add additional fields to the result struct
-trainedClassifier.RequiredVariables = {'Feature1', 'Feature10', 'Feature11', 'Feature12', 'Feature13', 'Feature2', 'Feature3', 'Feature4', 'Feature5', 'Feature6', 'Feature7', 'Feature8', 'Feature9', 'TARGET'};
+trainedClassifier.RequiredVariables = {'Feature1', 'Feature10', 'Feature11', 'Feature12', 'Feature2', 'Feature3', 'Feature4', 'Feature5', 'Feature6', 'Feature7', 'Feature8', 'Feature9', 'TARGET'};
 trainedClassifier.ClassificationSVM = classificationSVM;
 trainedClassifier.About = 'This struct is a trained model exported from Classification Learner R2022a.';
 trainedClassifier.HowToPredict = sprintf('To make predictions on a new table, T, use: \n  yfit = c.predictFcn(T) \nreplacing ''c'' with the name of the variable that is this struct, e.g. ''trainedModel''. \n \nThe table, T, must contain the variables returned by: \n  c.RequiredVariables \nVariable formats (e.g. matrix/vector, datatype) must match the original training data. \nAdditional variables are ignored. \n \nFor more information, see <a href="matlab:helpview(fullfile(docroot, ''stats'', ''stats.map''), ''appclassification_exportmodeltoworkspace'')">How to predict using an exported model</a>.');
