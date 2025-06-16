@@ -79,10 +79,10 @@ trainedClassifier.HowToPredict = sprintf('To make predictions on a new table, T,
 % This code processes the data into the right shape for training the
 % model.
 inputTable = trainingData;
-predictorNames = {'Feature1', 'Feature2', 'Feature3', 'Feature4', 'Feature5', 'Feature6', 'Feature7', 'Feature8', 'Feature9', 'Feature10', 'Feature11', 'Feature12', 'Feature13', 'TARGET'};
+predictorNames = {'Feature1', 'Feature2', 'Feature3', 'Feature4', 'Feature5', 'Feature6', 'Feature7', 'Feature8', 'Feature9', 'Feature10', 'Feature11', 'Feature12', 'TARGET'};
 predictors = inputTable(:, predictorNames);
 response = inputTable.Subjects;
-isCategoricalPredictor = [false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+isCategoricalPredictor = [false, false, false, false, false, false, false, false, false, false, false, false, false];
 
 % Perform cross-validation
 partitionedModel = crossval(trainedClassifier.ClassificationSVM, 'KFold', 5);
