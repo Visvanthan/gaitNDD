@@ -3,6 +3,7 @@ Title: An Integrated Shannon Entropy, SVM and Empirical Mode Decomposition for G
 This project proposes an Integrated Shannon Entropy, SVM and Empirical Mode Decomposition framework for classifying neurodegenerative diseases based on gait signals obtained from the PhysioNet Gait Database. The raw gait data is first decomposed using Empirical Mode Decomposition (EMD) to extract meaningful oscillatory modes known as Intrinsic Mode Functions (IMFs).  From these IMFs, Power Spectral Density (PSD)  reveals the energy distribution in the frequency domain, highlighting disease-specific gait patterns. Significant IMF is chosen with PSD, and Shannon Entropy quantifies the uncertainty or complexity of  the IMF, and gait features are extracted. These features are then used to train a Multiclass Support Vector Machine (SVM) classifier, enabling classification among multiple neurodegenerative classes. The proposed model is evaluated using standard metrics such as accuracy, precision, recall, and F1-score.
 
 Code Explanation Steps
+
 i)	Load the gait data from the Physionet database.
 ii)	 EMD decomposes a non-stationary and nonlinear signal into a set of simpler components called Intrinsic Mode Functions (IMFs).
 imf = emd(signal);  %Decomposes each gait signal into IMFs
