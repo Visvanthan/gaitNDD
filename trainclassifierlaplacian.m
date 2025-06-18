@@ -1,14 +1,13 @@
 
 function K = laplacianKernel(U, V)
-    sigma = 1;  % You can tune this value
+    sigma = 1; 
     D = pdist2(U, V, 'cityblock');  % L1 norm (Manhattan distance)
-    K = exp(-D / sigma);  % Laplacian kernel formula
+    K = exp(-D / sigma); 
 end
-% Create custom SVM template with Laplacian kernel
 t = templateSVM('KernelFunction', @laplacianKernel, ...
                 'Standardize', true, 'KernelScale', 'auto');
 
-% Train multiclass SVM using ECOC framework
+
 Mdl = fitcecoc(X, Y, 'Learners', t, 'Coding', 'onevsall');
 
 % Display training complete
