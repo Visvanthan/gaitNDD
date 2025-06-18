@@ -92,3 +92,21 @@ partitionedModel = crossval(trainedClassifier.ClassificationSVM, 'KFold', 5);
 
 % Compute validation accuracy
 validationAccuracy = 1 - kfoldLoss(partitionedModel, 'LossFun', 'ClassifError');
+% Create the result struct with predict function
+svmPredictFcn = @(x) predict(classificationSVM, x);
+validationPredictFcn = @(x) svmPredictFcn(x);
+
+% Add additional fields to the result struct
+
+
+% Compute validation predictions
+validationPredictors = predictors(cvp.test, :);
+validationResponse = response(cvp.test, :);
+[validationPredictions, validationScores] = validationPredictFcn(validationPredictors);
+
+% Compute validation accuracy
+correctPredictions = (validationPredictions == validationResponse);
+isMissing = ismissing(validationResponse);
+correctPredictions = correctPredictions(~isMissing);
+validationAccuracy = sum(correctPredictions)/length(correctPredictions);
+
