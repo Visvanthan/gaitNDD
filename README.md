@@ -77,14 +77,8 @@ vii.	View the confusion matrix, accuracy, and other performance metrics
 System requirements: Windows 10 operating system, Intel (R) core TM i5-7200U CPU @2.50GHz, RAM :16GB 
 Software requirements :Matlab 2022a
 
-8, Not applicable
-
-9,Not applicable
-
-10 Not applicable
-
-11. Hardware requirements
+8. Hardware requirements
  Intel (R) core TM i5-7200U CPU @2.50GHz, RAM :16GB, Graphics card: Intel ® HD Graphics 620 (128MB)
-Sofware requirements
+10.Sofware requirements
 Windows 10 operating system, Matlab 2022a
 
