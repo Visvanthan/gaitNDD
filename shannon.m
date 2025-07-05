@@ -20,7 +20,7 @@ counts(counts==0) = [];
 H = -sum(counts .* log2(counts));
 end
 
-function H = distribution_entropy(signal, m, r)
+function H = DistEn(signal, m)
 N = length(signal);
 X = buffer(signal, m, m-1, 'nodelay')';
 X = X(1:N-m+1,:);
@@ -30,14 +30,14 @@ counts(counts==0) = [];
 H = -sum(counts .* log(counts));
 end
 
-function H = spectral_entropy(signal)
+function H = SpecEn(signal,m)
 [Pxx,~] = periodogram(signal);
 Pxx = Pxx / sum(Pxx);
 Pxx(Pxx==0) = [];
 H = -sum(Pxx .* log2(Pxx));
 end
 
-function H = dispersion_entropy(signal, m, c, tau)
+function H = DispEn(signal, m)
 y = (signal - min(signal)) / (max(signal) - min(signal) + eps);
 yq = floor(c * y);
 yq(yq == c) = c - 1;
@@ -53,19 +53,19 @@ counts(counts==0) = [];
 H = -sum(counts .* log(counts));
 end
 
-function H = symbolic_dynamic_entropy(signal, c)
+function H = SyDyEn(signal, c)
 symbolic = floor(c * (signal - min(signal)) / (max(signal) - min(signal) + eps));
 [counts,~] = histcounts(symbolic, c, 'Normalization', 'probability');
 counts(counts==0) = [];
 H = -sum(counts .* log2(counts));
 end
 
-function H = increment_entropy(signal)
+function H = IncrEn(signal,m)
 diff_signal = diff(signal);
 H = shannon_entropy(diff_signal);
 end
 
-function H = cosine_similarity_entropy(signal, m)
+function H = CoSiEn(signal, m)
 N = length(signal);
 X = buffer(signal, m, m-1, 'nodelay')';
 sims = [];
@@ -79,7 +79,7 @@ counts(counts==0) = [];
 H = -sum(counts .* log2(counts));
 end
 
-function H = phase_entropy(signal)
+function H = PhasEn(signal)
 hilb = hilbert(signal);
 phases = angle(hilb);
 [counts,~] = histcounts(phases, 50, 'Normalization','probability');
@@ -87,7 +87,7 @@ counts(counts==0) = [];
 H = -sum(counts .* log2(counts));
 end
 
-function H = slope_entropy(signal)
+function H = SlopEn(signal,m)
 slope = diff(signal);
 symbols = sign(slope);
 symbols(symbols == 0) = 2;
@@ -98,7 +98,7 @@ counts(counts==0) = [];
 H = -sum(counts .* log2(counts));
 end
 
-function count = bubble_sort_count(arr)
+function count = BubbEn(arr)
 count = 0;
 a = arr;
 for i = 1:length(a)
@@ -113,7 +113,7 @@ for i = 1:length(a)
 end
 end
 
-function H = bubble_entropy(signal, m)
+function H = BubbEn(signal, m)
 N = length(signal);
 counts_vec = zeros(1, N-m+1);
 for i = 1:N-m+1
@@ -124,14 +124,14 @@ counts(counts==0) = [];
 H = -sum(counts .* log2(counts));
 end
 
-function H = gridded_distribution_entropy(signal, grids)
+function H = GridEn(signal, grids)
 edges = linspace(min(signal), max(signal), grids+1);
 [counts,~] = histcounts(signal, edges, 'Normalization','probability');
 counts(counts==0) = [];
 H = -sum(counts .* log2(counts));
 end
 
-function H = entropy_of_entropy(signal, win)
+function H = EnofEn(signal, win)
 N = length(signal);
 num_windows = floor(N / win);
 entropies = zeros(1, num_windows);
@@ -142,7 +142,7 @@ end
 H = shannon_entropy(entropies);
 end
 
-function H = attention_entropy(signal, win)
+function H = AttEn(signal, win)
 N = length(signal);
 num_windows = floor(N / win);
 entropies = zeros(1, num_windows);
