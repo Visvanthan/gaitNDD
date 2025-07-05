@@ -1,4 +1,4 @@
-aa=xlsread('E:\vmddata1.xlsx');
+aa=xlsread('E:\emddata1.xlsx');
 [imf,res]=emd(aa);
 pxx1=periodogram(imf(:,1));
 pxx2=periodogram(imf(:,2));
